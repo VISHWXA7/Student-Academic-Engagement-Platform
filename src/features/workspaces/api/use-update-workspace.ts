@@ -8,6 +8,7 @@ type RequestType = InferRequestType<typeof client.api.workspaces[":workspaceId"]
 
 export const useUpdateWorkspace = () => {
     const queryClient = useQueryClient();
+
     const mutation = useMutation<
     ResponseType,
     Error,
@@ -25,6 +26,7 @@ export const useUpdateWorkspace = () => {
         },
         onSuccess: ({ data }) => {
             toast.success("Workspace updated");
+
             queryClient.invalidateQueries({ queryKey: ["workspaces"] });
             queryClient.invalidateQueries({ queryKey: ["workspace", data.$id] });
         },
