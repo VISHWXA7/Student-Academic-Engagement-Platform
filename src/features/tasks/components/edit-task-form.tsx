@@ -7,7 +7,6 @@ import { DottedSeparator } from "@/components/dotted-separator";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useRouter } from "next/navigation";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -29,7 +28,6 @@ import { DatePicker } from "@/components/date-picker";
 
 import { createTaskSchema } from "../schemas";
 import { Task, TaskStatus } from "../types";
-import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 import { MemberAvatar } from "@/features/members/components/member-avatar";
 import { ProjectAvatar } from "@/features/projects/components/project-avatar";
 import { useUpdateTask } from "../api/use-update-task";
@@ -43,8 +41,6 @@ interface EditTaskFormProps {
 
 
 export const EditTaskForm = ({ onCancel, projectOptions, memberOptions, initialValues }: EditTaskFormProps) => {
-    const workspaceId = useWorkspaceId();
-    const router = useRouter();
     const { mutate, isPending } = useUpdateTask();
 
     const form = useForm<z.infer<typeof createTaskSchema>>({

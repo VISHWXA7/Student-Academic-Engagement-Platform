@@ -1,5 +1,4 @@
-import { useQueryState, parseAsBoolean, parseAsString} from "nuqs";
-import { useState } from "react";
+import { useQueryState, parseAsString} from "nuqs";
 
 export const useEditTaskModal = () => {
   const [taskId, setTaskId] = useQueryState(

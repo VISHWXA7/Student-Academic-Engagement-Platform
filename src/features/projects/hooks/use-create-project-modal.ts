@@ -1,5 +1,4 @@
 import { useQueryState, parseAsBoolean} from "nuqs";
-import { useState } from "react";
 
 export const useCreateProjectModal = () => {
   const [isOpen, setIsOpen] = useQueryState(

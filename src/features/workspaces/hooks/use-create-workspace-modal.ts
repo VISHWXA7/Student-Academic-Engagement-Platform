@@ -1,5 +1,4 @@
 import { useQueryState, parseAsBoolean} from "nuqs";
-import { useState } from "react";
 
 export const useCreateWorkspaceModal = () => {
   const [isOpen, setIsOpen] = useQueryState(

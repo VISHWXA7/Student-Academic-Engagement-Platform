@@ -10,9 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
 import Image from "next/image";
-import { ArrowLeftIcon, CopyIcon, ImageIcon } from "lucide-react";
+import { ArrowLeftIcon, ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { toast } from "sonner";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -248,7 +247,7 @@ export const EditProjectForm = ({ onCancel, initialValues }: EditProjectFormProp
                 size="sm"
                 variant="destructive"
                 type="button"
-                disabled={isPending}
+                disabled={isPending || isDeletingProject}
                 onClick={handleDelete}
                 >
                     Delete Project
