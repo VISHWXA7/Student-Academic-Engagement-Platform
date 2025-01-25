@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
+import { ProjectIdSettingsClient } from "./client";
 
 import { getCurrent } from "@/features/auth/queries";
-import { ProjectIdSettingsClient } from "./client";
 
 
 const ProjectIdSettingsPage = async () => {

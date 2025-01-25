@@ -1,6 +1,7 @@
-import { getCurrent } from "@/features/auth/queries";
 import { redirect } from "next/navigation";
 import { WorkspaceIdJoinClient } from "./client";
+
+import { getCurrent } from "@/features/auth/queries";
 
 const WorkspaceJoinPage = async () => {
 

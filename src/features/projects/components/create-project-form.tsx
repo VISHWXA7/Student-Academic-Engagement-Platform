@@ -2,15 +2,19 @@
 
 import { z } from "zod";
 import { useRef } from "react";
-import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { ImageIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
-import { DottedSeparator } from "@/components/dotted-separator";
+import { useRouter } from "next/navigation";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { createProjectSchema } from "../schemas";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useCreateProject } from "../api/use-create-project";
 import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
-import Image from "next/image";
-import { ImageIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { DottedSeparator } from "@/components/dotted-separator";
+import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -22,10 +26,6 @@ import {
     FormMessage,
 } from "@/components/ui/form"; 
 
-import { createProjectSchema } from "../schemas";
-import { useRouter } from "next/navigation";
-import { useCreateProject } from "../api/use-create-project";
-import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 
 interface CreateProjectFormProps {
     onCancel?: () => void;

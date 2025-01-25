@@ -1,17 +1,17 @@
-import { Hono } from "hono";
 import { z } from "zod";
+import { Hono } from "hono";
 import { ID, Query } from "node-appwrite";
 import { zValidator } from "@hono/zod-validator";
-import { MemberRole } from "@/features/members/types";
-import { getMember } from "@/features/members/utils";
 
+import { Workspace } from "../types";
+import { generateInviteCode } from "@/lib/utils";
+import { sessionMiddleware } from "@/lib/session-middleware";
+import { endOfMonth, startOfMonth, subMonths } from "date-fns";
+import { createWorkspaceSchema, updateWorkspaceSchema } from "../schemas";
 import { DATABASE_ID, IMAGES_BUCKET_ID, MEMBERS_ID, TASKS_ID, WORKSPACE_ID } from "@/config";
 
-import { createWorkspaceSchema, updateWorkspaceSchema } from "../schemas";
-import { sessionMiddleware } from "@/lib/session-middleware";
-import { generateInviteCode } from "@/lib/utils";
-import { Workspace } from "../types";
-import { endOfMonth, startOfMonth, subMonths } from "date-fns";
+import { MemberRole } from "@/features/members/types";
+import { getMember } from "@/features/members/utils";
 import { TaskStatus } from "@/features/tasks/types";
 
 const app = new Hono()
@@ -228,8 +228,6 @@ const app = new Hono()
             if (!member || member.role !== MemberRole.ADMIN) {
                 return c.json({ error: "Unauthorized" }, 401);
             }
-
-            // TODO : Delete members, projects, and tasks
 
             await databases.deleteDocument(
                 DATABASE_ID,

@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { SettingsIcon, UsersIcon } from "lucide-react";
-import { GoCheckCircle, GoCheckCircleFill, GoHome, GoHomeFill } from "react-icons/go";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
+import { SettingsIcon, UsersIcon } from "lucide-react";
+import { GoCheckCircle, GoCheckCircleFill, GoHome, GoHomeFill } from "react-icons/go";
+
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 
 const routes = [
@@ -28,6 +29,18 @@ const routes = [
     },
     {
         label: "Members",
+        href: "/members",
+        icon: UsersIcon,
+        activeIcon: UsersIcon,
+    },
+    {
+        label: "Time Table",
+        href: "/timetable",
+        icon: UsersIcon,
+        activeIcon: UsersIcon,
+    },
+    {
+        label: "Attendance",
         href: "/members",
         icon: UsersIcon,
         activeIcon: UsersIcon,

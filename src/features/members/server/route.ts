@@ -1,13 +1,13 @@
 import { z } from "zod";
 import { Hono } from "hono";
-import { zValidator } from "@hono/zod-validator";
-import { Query } from "node-appwrite";
 import { getMember } from "../utils";
+import { Query } from "node-appwrite";
 import { Member, MemberRole } from "../types";
-
-import { sessionMiddleware } from "@/lib/session-middleware";
-import { createAdminClient } from "@/lib/appwrite";
+import { zValidator } from "@hono/zod-validator";
 import { DATABASE_ID, MEMBERS_ID } from "@/config";
+import { createAdminClient } from "@/lib/appwrite";
+import { sessionMiddleware } from "@/lib/session-middleware";
+
 
 const app = new Hono()
     .get(
@@ -104,6 +104,7 @@ const app = new Hono()
             return c.json({ data: {$id: memberToDelete.$id } });
         }
     )
+    
     .patch(
         "/:memberId",
         sessionMiddleware,
