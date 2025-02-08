@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
-import { SettingsIcon, UsersIcon } from "lucide-react";
-import { GoCheckCircle, GoCheckCircleFill, GoHome, GoHomeFill } from "react-icons/go";
+import { CalendarIcon, CheckCircleIcon, SettingsIcon, UsersIcon } from "lucide-react";
+import { GoHome, GoHomeFill } from "react-icons/go";
 
 import { useWorkspaceId } from "@/features/workspaces/hooks/use-workspace-id";
 
@@ -16,18 +16,6 @@ const routes = [
         activeIcon: GoHomeFill,
     },
     {
-        label: "My Tasks",
-        href: "/tasks",
-        icon: GoCheckCircle,
-        activeIcon: GoCheckCircleFill,
-    },
-    {
-        label: "Settings",
-        href: "/settings",
-        icon: SettingsIcon,
-        activeIcon: SettingsIcon,
-    },
-    {
         label: "Members",
         href: "/members",
         icon: UsersIcon,
@@ -36,14 +24,20 @@ const routes = [
     {
         label: "Time Table",
         href: "/timetable",
-        icon: UsersIcon,
-        activeIcon: UsersIcon,
+        icon: CalendarIcon,
+        activeIcon: CalendarIcon,
     },
     {
         label: "Attendance",
-        href: "/members",
-        icon: UsersIcon,
-        activeIcon: UsersIcon,
+        href: "/attendance",
+        icon: CheckCircleIcon,
+        activeIcon: CheckCircleIcon,
+    },
+    {
+        label: "Settings",
+        href: "/settings",
+        icon: SettingsIcon,
+        activeIcon: SettingsIcon,
     },
 ];
 

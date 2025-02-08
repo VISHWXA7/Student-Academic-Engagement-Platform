@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Student Engagement Platform",
-  description: "Here students can engage to scheduled there projects",
+  description: "Here students can manage their academic activities",
 };
 
 export default function RootLayout({

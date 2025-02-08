@@ -7,9 +7,7 @@ import { DottedSeparator } from "@/components/dotted-separator";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { DataTable } from "./data-table";
 import { DataFilters } from "./data-filters";
-import { columns } from "./columns";
 
 import { useCreateTaskModal } from "../hooks/use-create-task-modal";
 import { useGetTasks } from "../api/use-get-tasks";
@@ -19,7 +17,6 @@ import { DataKanban } from "./data-kanban";
 import { useCallback } from "react";
 import { TaskStatus } from "../types";
 import { useBulkUpdateTasks } from "../api/use-bulk-update-tasks";
-import { DataCalendar } from "./data-calendar";
 import { useProjectId } from "@/features/projects/hooks/use-project-id";
 
 interface TaskViewSwitcherProps {
@@ -74,21 +71,9 @@ export const TaskViewSwitcher = ({ hideProjectFilter }: TaskViewSwitcherProps) =
                     <TabsList className="w-full lg:w-auto">
                         <TabsTrigger 
                         className="h-8 w-full lg:w-auto"
-                        value="table"
-                        >
-                            Table
-                        </TabsTrigger>
-                        <TabsTrigger 
-                        className="h-8 w-full lg:w-auto"
                         value="kanban"
                         >
                             Kanban
-                        </TabsTrigger>
-                        <TabsTrigger 
-                        className="h-8 w-full lg:w-auto"
-                        value="calender"
-                        >
-                            Calender
                         </TabsTrigger>
                     </TabsList>
                     <Button
@@ -109,14 +94,8 @@ export const TaskViewSwitcher = ({ hideProjectFilter }: TaskViewSwitcherProps) =
                     </div>
                 ) : (
                     <>
-                        <TabsContent value="table" className="mt-0">
-                            <DataTable columns={columns} data={tasks?.documents ?? []}/>
-                        </TabsContent>
                         <TabsContent value="kanban" className="mt-0">
                             <DataKanban onChange={onKanbanChange} data={tasks?.documents ?? []}/>
-                        </TabsContent>
-                        <TabsContent value="calender" className="mt-0">
-                            <DataCalendar data={tasks?.documents ?? []}/>
                         </TabsContent>
                     </>
                 )}
